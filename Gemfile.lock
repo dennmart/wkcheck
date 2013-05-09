@@ -5,6 +5,7 @@ GEM
     multi_json (1.5.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    slop (3.4.4)
     wanikani (0.0.3)
       multi_json (~> 1.5.0)
       rest-client (~> 1.6)
@@ -13,4 +14,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  slop
   wanikani
