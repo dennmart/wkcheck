@@ -1,11 +1,13 @@
+#!/usr/bin/env ruby
+
 require 'yaml'
 require 'slop'
 require 'wanikani'
 
-CONFIG_FILE = "#{Dir.home}/.wanikani_check.yml"
+CONFIG_FILE = "#{Dir.home}/.wkcheck.yml"
 
 opts = Slop.parse(help: true) do
-  banner "Usage: wanikani_check.rb [options]"
+  banner "Usage: wkcheck [options]"
 
   on "api_key=", "Saves your WaniKani API Key to #{CONFIG_FILE}"
 end
@@ -23,7 +25,7 @@ api_key = if File.exists?(CONFIG_FILE)
 
 if api_key.nil? || api_key.empty?
   puts "You must first save your WaniKani API Key using the --api-key flag."
-  exit
+  exit 1
 end
 
 Wanikani.api_key = api_key
