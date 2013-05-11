@@ -18,4 +18,6 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "wanikani", "~> 0.0.3"
   s.add_runtime_dependency "slop", "~> 3.4.4"
+
+  s.add_development_dependency "aruba", "~> 0.5.2"
 end

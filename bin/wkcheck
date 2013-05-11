@@ -13,7 +13,7 @@ opts = Slop.parse(help: true) do
 end
 
 unless opts[:api_key].nil? || opts[:api_key].empty?
-  File.open(CONFIG_FILE, 'w') { |f| f.write({ api_key: opts[:api_key] }.to_yaml) } unless opts[:api_key].nil?
+  #File.open(CONFIG_FILE, 'w') { |f| f.write({ api_key: opts[:api_key] }.to_yaml) } unless opts[:api_key].nil?
   puts "WaniKani API Key saved to #{CONFIG_FILE}!"
   exit
 end
