@@ -7,10 +7,10 @@ $ gem install wanikani
 
 ## API Key
 
-Before using wkcheck, you need to set up the WaniKani API key from your account. You need to use the `--api_key` flag to save your API Key for future use. This only needs to be done once. A file will be created in `~/.wkcheck.yml` with your API Key. The key can be found in your [account settings](http://www.wanikani.com/account).
+Before using wkcheck, you need to set up the WaniKani API key from your account. You need to use the `--api-key` flag to save your API Key for future use. This only needs to be done once. A file will be created in `~/.wkcheck.yml` with your API Key. The key can be found in your [account settings](http://www.wanikani.com/account).
 
 ```
-$ wkcheck --api_key=YOUR_WANIKANI_API_KEY
+$ wkcheck --api-key=YOUR_WANIKANI_API_KEY
 ```
 
 ## Usage

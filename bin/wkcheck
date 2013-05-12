@@ -9,11 +9,11 @@ require 'wkcheck'
 opts = Slop.parse(help: true) do
   banner "Usage: wkcheck [options]"
 
-  on "api_key=", "Saves your WaniKani API Key to #{WKCheck::CONFIG_FILE}"
+  on "api-key=", "Saves your WaniKani API Key to #{WKCheck::CONFIG_FILE}"
 end
 
-unless opts[:api_key].nil? || opts[:api_key].empty?
-  File.open(WKCheck::CONFIG_FILE, 'w') { |f| f.write({ api_key: opts[:api_key] }.to_yaml) } unless opts[:api_key].nil?
+unless opts["api-key"].nil? || opts["api-key"].empty?
+  File.open(WKCheck::CONFIG_FILE, 'w') { |f| f.write({ api_key: opts["api-key"] }.to_yaml) } unless opts["api-key"].nil?
   puts "WaniKani API Key saved to #{WKCheck::CONFIG_FILE}!"
   exit
 end
