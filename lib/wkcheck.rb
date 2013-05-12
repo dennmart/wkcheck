@@ -1,3 +1,5 @@
+require 'wanikani'
+
 module WKCheck
   CONFIG_FILE = "#{Dir.home}/.wkcheck.yml"
 
@@ -6,14 +8,16 @@ module WKCheck
       queue = Wanikani::StudyQueue.queue
       lessons = queue["lessons_available"]
       reviews = queue["reviews_available"]
-      next_review_date = Time.at(queue["next_review_date"])
+      next_review_date = Time.at(queue["next_review_date"]).strftime("%A, %B %-d at %l:%M %p")
 
       if lessons.zero? && reviews.zero?
-        puts "You have no lessons or reviews now! You'll have some more on #{next_review_date}."
+        message = "You have no lessons or reviews now! You'll have some more on #{next_review_date}."
       else
-        puts "You have #{lessons.zero? ? "no" : lessons } lessons pending."
-        puts "You have #{reviews.zero? ? "no" : reviews } reviews pending."
+        message = "You have #{lessons.zero? ? "no" : lessons } lessons pending."
+        message += "\nYou have #{reviews.zero? ? "no" : reviews } reviews pending."
       end
+
+      message
     end
   end
 end

@@ -2,7 +2,6 @@
 
 require 'yaml'
 require 'slop'
-require 'wanikani'
 
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 require 'wkcheck'
@@ -31,4 +30,4 @@ end
 
 Wanikani.api_key = api_key
 
-WKCheck::Study.available_stats
+puts WKCheck::Study.available_stats
