@@ -8,7 +8,7 @@ module WKCheck
       queue = Wanikani::StudyQueue.queue
       lessons = queue["lessons_available"]
       reviews = queue["reviews_available"]
-      next_review_date = Time.at(queue["next_review_date"]).strftime("%A, %B %-d at %l:%M %p")
+      next_review_date = Time.at(queue["next_review_date"]).utc.strftime("%A, %B %-d at %-l:%M %p")
 
       if lessons.zero? && reviews.zero?
         message = "You have no lessons or reviews now! You'll have some more on #{next_review_date}."

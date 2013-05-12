@@ -35,7 +35,7 @@ describe WKCheck::Study do
       Wanikani::StudyQueue.expects(:queue).returns(study_queue_data(0, 0))
 
       message = WKCheck::Study.available_stats
-      message.must_equal "You have no lessons or reviews now! You'll have some more on Tuesday, January 1 at 12:00 AM."
+      message.must_equal "You have no lessons or reviews now! You'll have some more on Tuesday, January 1 at 8:00 AM."
     end
   end
 end
