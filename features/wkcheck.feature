@@ -16,3 +16,7 @@ Feature: Show pending lessons and reviews from WaniKani
       """
       You must first save your WaniKani API Key using the --api-key flag.
       """
+
+  Scenario: Displaying version number
+    When I run `wkcheck -v`
+    Then the stdout should contain "wkcheck"
