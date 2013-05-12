@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    wkstats (0.0.1)
+    wkcheck (0.0.1)
       slop (~> 3.4.4)
       wanikani (~> 0.0.3)
 
@@ -44,4 +44,4 @@ PLATFORMS
 DEPENDENCIES
   aruba (~> 0.5.2)
   mocha (~> 0.13.3)
-  wkstats!
+  wkcheck!
