@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dennmart/wkcheck.png)](https://travis-ci.org/dennmart/wkcheck)
+
 **wkcheck** is a command-line tool to access information from your [WaniKani](http://www.wanikani.com/) account.
 
 ## Installation
