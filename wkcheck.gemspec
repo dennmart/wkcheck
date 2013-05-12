@@ -21,4 +21,5 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "aruba", "~> 0.5.2"
   s.add_development_dependency "mocha", "~> 0.13.3"
+  s.add_development_dependency "rake", "~> 10.0.4"
 end
