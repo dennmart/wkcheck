@@ -4,8 +4,8 @@ module WKCheck
   VERSION = "0.0.2"
   CONFIG_FILE = "#{Dir.home}/.wkcheck.yml"
 
-  class Study
-    def self.available_stats
+  class Stats
+    def study_queue
       queue = Wanikani::StudyQueue.queue
       lessons = queue["lessons_available"]
       reviews = queue["reviews_available"]

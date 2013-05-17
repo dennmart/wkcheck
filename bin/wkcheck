@@ -35,4 +35,5 @@ end
 
 Wanikani.api_key = api_key
 
-puts WKCheck::Study.available_stats
+stats = WKCheck::Stats.new
+puts stats.study_queue
