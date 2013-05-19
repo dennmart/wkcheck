@@ -9,10 +9,12 @@ Rake::TestTask.new do |t|
   t.test_files = Dir.glob('test/*_test.rb')
 end
 
-desc "Run all unit tests and Cucumber scenarios"
-task :test_all do
-  Rake::Task["features"].execute
-  Rake::Task["test"].execute
+namespace :test do
+  desc "Run all unit tests and Cucumber scenarios"
+  task :all do
+    Rake::Task["features"].execute
+    Rake::Task["test"].execute
+  end
 end
 
 task(default: :test)
