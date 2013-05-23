@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dennmart/wkcheck.png)](https://travis-ci.org/dennmart/wkcheck)
+[![Build Status](https://travis-ci.org/dennmart/wkcheck.png)](https://travis-ci.org/dennmart/wkcheck) [![Code Climate](https://codeclimate.com/github/dennmart/wkcheck.png)](https://codeclimate.com/github/dennmart/wkcheck)
 
 **wkcheck** is a command-line tool to access information from your [WaniKani](http://www.wanikani.com/) account.
 
