@@ -4,7 +4,7 @@ PATH
     wkcheck (0.0.2)
       rainbow (~> 1.1.4)
       slop (~> 3.4.4)
-      wanikani (~> 0.0.3)
+      wanikani (~> 0.0.4)
 
 GEM
   remote: https://rubygems.org/
@@ -37,7 +37,7 @@ GEM
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
     slop (3.4.5)
-    wanikani (0.0.3)
+    wanikani (0.0.4)
       multi_json (~> 1.5.0)
       rest-client (~> 1.6)
 
