@@ -14,6 +14,11 @@ module WKCheck
       queue_message(lessons, reviews, next_review_date)
     end
 
+    def level_progression
+      progress = Wanikani::Level.progression
+      progression_message(progress)
+    end
+
     private
 
     def queue_message(lessons, reviews, next_review_date)
@@ -25,6 +30,17 @@ module WKCheck
         message = "You have #{lessons_msg} lessons pending"
         message += "\nYou have #{reviews_msg} reviews pending"
       end
+    end
+
+    def progression_message(progress)
+      radicals_percent = (progress["radicals_progress"].to_f / progress["radicals_total"].to_f) * 100
+      kanji_percent = (progress["kanji_progress"].to_f / progress["kanji_total"].to_f) * 100
+
+      message = "Your progress for level #{progress["current_level"]}:\n".color(:green)
+      message += "#{progress["radicals_progress"]} out of #{progress["radicals_total"]} radicals".color(:cyan)
+      message += " (#{radicals_percent.round(1)}%)\n"
+      message += "#{progress["kanji_progress"]} out of #{progress["kanji_total"]} Kanji".color(:cyan)
+      message += " (#{kanji_percent.round(1)}%)\n"
     end
   end
 end

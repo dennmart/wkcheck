@@ -11,6 +11,7 @@ opts = Slop.parse(help: true) do
 
   on "api-key=", "Saves your WaniKani API Key to #{WKCheck::CONFIG_FILE}"
   on "q", "queue", "Displays your current study queue (new lessons / pending reviews)"
+  on "l", "level", "Displays your current level progression (radicals / Kanji)"
   on "v", "version", "Show version number and quit" do
     puts "wkcheck #{WKCheck::VERSION}"
     exit
@@ -38,6 +39,12 @@ Wanikani.api_key = api_key
 if opts.queue?
   stats = WKCheck::Stats.new
   puts stats.study_queue
+  exit
+end
+
+if opts.level?
+  stats = WKCheck::Stats.new
+  puts stats.level_progression
   exit
 end
 

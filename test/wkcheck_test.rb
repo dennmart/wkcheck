@@ -6,7 +6,7 @@ require 'wkcheck'
 
 Sickill::Rainbow.enabled = false
 
-class TestWKCheckStats < MiniTest::Unit::TestCase
+class TestStudyQueue < MiniTest::Unit::TestCase
   def study_queue_data(lessons, reviews)
     {
       "lessons_available"           => lessons,
@@ -41,5 +41,32 @@ class TestWKCheckStats < MiniTest::Unit::TestCase
 
     message = @stats.study_queue
     assert_equal "You have no lessons or reviews now! You'll have some more on Tuesday, January 1 at 8:00 AM.", message
+  end
+end
+
+class TestLevelProgression < MiniTest::Unit::TestCase
+  def level_progression_data
+    {
+      "current_level" => 30,
+      "radicals_progress" => 7,
+      "radicals_total" => 10,
+      "kanji_progress" => 10,
+      "kanji_total" => 30
+    }
+  end
+
+  def setup
+    stats = WKCheck::Stats.new
+    Wanikani::Level.expects(:progression).returns(level_progression_data)
+    @message = stats.level_progression
+  end
+
+  def test_display_current_level
+    assert_match /Your progress for level 30/, @message
+  end
+
+  def test_display_radicals_and_kanji_progress_and_percentage
+    assert_match /7 out of 10 radicals \(70.0%\)/, @message
+    assert_match /10 out of 30 Kanji \(33.3%\)/, @message
   end
 end
