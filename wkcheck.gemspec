@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name          = "wkcheck"
-  s.version       = "0.0.2"
-  s.date          = "2013-05-12"
+  s.version       = "0.0.3"
+  s.date          = "2013-05-22"
   s.summary       = "Check your WaniKani stats from the command line"
   s.description   = "Check your pending lessons and reviews of your WaniKani account (http://www.wanikani.com/) from the command line"
   s.authors       = ["Dennis Martinez"]

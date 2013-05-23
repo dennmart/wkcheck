@@ -2,7 +2,7 @@ require 'wanikani'
 require 'rainbow'
 
 module WKCheck
-  VERSION = "0.0.2"
+  VERSION = "0.0.3"
   CONFIG_FILE = "#{Dir.home}/.wkcheck.yml"
 
   class Stats
