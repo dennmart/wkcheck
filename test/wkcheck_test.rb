@@ -4,6 +4,8 @@ require 'mocha/setup'
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 require 'wkcheck'
 
+Sickill::Rainbow.enabled = false
+
 class TestWKCheckStats < MiniTest::Unit::TestCase
   def study_queue_data(lessons, reviews)
     {

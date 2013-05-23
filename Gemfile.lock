@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     wkcheck (0.0.2)
+      rainbow (~> 1.1.4)
       slop (~> 3.4.4)
       wanikani (~> 0.0.3)
 
@@ -29,12 +30,13 @@ GEM
     mocha (0.13.3)
       metaclass (~> 0.0.1)
     multi_json (1.5.1)
+    rainbow (1.1.4)
     rake (10.0.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
-    slop (3.4.4)
+    slop (3.4.5)
     wanikani (0.0.3)
       multi_json (~> 1.5.0)
       rest-client (~> 1.6)
