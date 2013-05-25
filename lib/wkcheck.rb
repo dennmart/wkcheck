@@ -16,9 +16,9 @@ module WKCheck
 
     def level_progression
       progress = Wanikani::Level.progression
-      progress.merge!({ "radicals_percent" => ((progress["radicals_progress"].to_f / progress["radicals_total"].to_f) * 100).round(1).to_s })
-      progress.merge!({ "kanji_percent" => ((progress["kanji_progress"].to_f / progress["kanji_total"].to_f) * 100).round(1).to_s })
-      progression_message(progress)
+      message = "Your progress for level #{progress["current_level"]}:\n".color(:green)
+      message += progression_message(progress, "radicals")
+      message += progression_message(progress, "kanji")
     end
 
     private
@@ -35,10 +35,9 @@ module WKCheck
       end
     end
 
-    def progression_message(progress)
-      message = "Your progress for level #{progress["current_level"]}:\n".color(:green)
-      message += "#{progress["radicals_progress"]} out of #{progress["radicals_total"]} radicals (#{progress["radicals_percent"].bright}%)\n".color(:cyan)
-      message += "#{progress["kanji_progress"]} out of #{progress["kanji_total"]} Kanji (#{progress["kanji_percent"].bright}%)\n".color(:cyan)
+    def progression_message(progress, group)
+      percent = ((progress["#{group}_progress"].to_f / progress["#{group}_total"].to_f) * 100).round(1).to_s
+      message = "#{progress["#{group}_progress"]} out of #{progress["#{group}_total"]} #{group.capitalize} (#{percent.bright}%)\n".color(:cyan)
     end
   end
 end

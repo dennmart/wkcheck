@@ -73,7 +73,7 @@ class TestLevelProgression < MiniTest::Unit::TestCase
   end
 
   def test_display_radicals_and_kanji_progress_and_percentage
-    assert_match /7 out of 10 radicals \(70.0%\)/, @message
+    assert_match /7 out of 10 Radicals \(70.0%\)/, @message
     assert_match /10 out of 30 Kanji \(33.3%\)/, @message
   end
 end
