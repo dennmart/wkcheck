@@ -36,6 +36,13 @@ class TestStudyQueue < MiniTest::Unit::TestCase
     assert_match /You have no reviews pending/, message
   end
 
+  def test_display_review_date_for_next_lessons
+    Wanikani::StudyQueue.expects(:queue).returns(study_queue_data(10, 0))
+
+    message = @stats.study_queue
+    assert_match /You have more reviews coming your way on Tuesday, January 1 at 8:00 AM./, message
+  end
+
   def test_display_review_date_for_no_lessons_or_reviews
     Wanikani::StudyQueue.expects(:queue).returns(study_queue_data(0, 0))
 
