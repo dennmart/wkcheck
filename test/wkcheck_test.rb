@@ -40,14 +40,14 @@ class TestStudyQueue < MiniTest::Unit::TestCase
     Wanikani::StudyQueue.expects(:queue).returns(study_queue_data(10, 0))
 
     message = @stats.study_queue
-    assert_match /You have more reviews coming your way on Tuesday, January 1 at 12:00 AM./, message
+    assert_match /You have more reviews coming your way on Tuesday, January 1 at \d{1,2}:\d{2} (AM|PM)./, message
   end
 
   def test_display_review_date_for_no_lessons_or_reviews
     Wanikani::StudyQueue.expects(:queue).returns(study_queue_data(0, 0))
 
     message = @stats.study_queue
-    assert_equal "You have no lessons or reviews now! You'll have some more on Tuesday, January 1 at 12:00 AM.", message
+    assert_match /You have no lessons or reviews now! You'll have some more on Tuesday, January 1 at \d{1,2}:\d{2} (AM|PM)./, message
   end
 end
 
