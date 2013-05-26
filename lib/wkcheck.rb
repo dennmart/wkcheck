@@ -10,7 +10,7 @@ module WKCheck
       queue = Wanikani::StudyQueue.queue
       lessons = queue["lessons_available"]
       reviews = queue["reviews_available"]
-      next_review_date = Time.at(queue["next_review_date"]).strftime("%A, %B %-d at %-l:%M %p")
+      next_review_date = Time.at(queue["next_review_date"]).localtime.strftime("%A, %B %-d at %-l:%M %p")
       queue_message(lessons, reviews, next_review_date)
     end
 
