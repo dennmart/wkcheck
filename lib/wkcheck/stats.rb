@@ -25,7 +25,7 @@ module WKCheck
         reviews_msg = reviews.zero? ? "no".color(:green) : reviews.to_s.color(:red)
         message = "You have #{lessons_msg} lessons pending"
         message += "\nYou have #{reviews_msg} reviews pending"
-        message += "\nYou have more reviews coming your way on #{next_review_date.bright.color(:green)}." unless reviews.zero?
+        message += "\nYou have more reviews coming your way on #{next_review_date.bright.color(:green)}." if reviews.zero?
         message
       end
     end
