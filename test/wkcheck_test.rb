@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+require 'minitest/pride'
 require 'mocha/setup'
 
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
