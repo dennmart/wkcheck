@@ -32,7 +32,9 @@ module WKCheck
 
     def progression_message(progress, group)
       percent = ((progress["#{group}_progress"].to_f / progress["#{group}_total"].to_f) * 100).round(1).to_s
-      "#{progress["#{group}_progress"]} out of #{progress["#{group}_total"]} #{group.capitalize} (#{percent.bright}%)\n".color(:cyan)
+      message = "#{progress["#{group}_progress"]} out of #{progress["#{group}_total"]} #{group.capitalize} ("
+      message += "#{percent}%".bright.color(:cyan)
+      message += ")\n"
     end
   end
 end
