@@ -1,6 +1,10 @@
 require 'minitest/autorun'
-require 'minitest/pride'
 require 'mocha/setup'
+
+begin
+  require 'minitest/pride'
+rescue LoadError
+end
 
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 require 'wkcheck'
