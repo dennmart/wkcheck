@@ -8,12 +8,13 @@ Gem::Specification.new do |s|
   s.email         = "dennis@dennmart.com"
   s.homepage      = "http://github.com/dennmart/wkcheck"
   s.executables   = ["wkcheck"]
-  s.require_paths = ["lib"]
+  s.require_paths = ["lib", "lib/wkcheck"]
   s.files         = %w[
     README.md
     bin/wkcheck
     wkcheck.gemspec
     lib/wkcheck.rb
+    lib/wkcheck/stats.rb
   ]
 
   s.required_ruby_version = '>= 1.9.2'
