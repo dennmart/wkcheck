@@ -7,6 +7,7 @@ Gem::Specification.new do |s|
   s.authors       = ["Dennis Martinez"]
   s.email         = "dennis@dennmart.com"
   s.homepage      = "http://github.com/dennmart/wkcheck"
+  s.license       = "MIT"
   s.executables   = ["wkcheck"]
   s.require_paths = ["lib", "lib/wkcheck"]
   s.files         = %w[
