@@ -27,7 +27,7 @@ class TestStudyQueue < MiniTest::Unit::TestCase
   end
 
   def test_display_pending_lessons_and_reviews
-    Wanikani::StudyQueue.expects(:queue).returns(study_queue_data(10, 500))
+    Wanikani::StudyQueue.stubs(:queue).returns(study_queue_data(10, 500))
 
     message = @stats.study_queue
     assert_match /You have 10 lessons pending/, message
@@ -35,28 +35,28 @@ class TestStudyQueue < MiniTest::Unit::TestCase
   end
 
   def test_uses_no_instead_of_zero
-    Wanikani::StudyQueue.expects(:queue).returns(study_queue_data(10, 0))
+    Wanikani::StudyQueue.stubs(:queue).returns(study_queue_data(10, 0))
 
     message = @stats.study_queue
     assert_match /You have no reviews pending/, message
   end
 
   def test_display_review_date_for_next_lessons_if_there_are_no_reviews
-    Wanikani::StudyQueue.expects(:queue).returns(study_queue_data(10, 0))
+    Wanikani::StudyQueue.stubs(:queue).returns(study_queue_data(10, 0))
 
     message = @stats.study_queue
     assert_match /You have more reviews coming your way on Tuesday, January 1 at \d{1,2}:\d{2} (AM|PM)./, message
   end
 
   def test_do_not_display_review_date_for_next_lessons_if_there_are_reviews
-    Wanikani::StudyQueue.expects(:queue).returns(study_queue_data(10, 10))
+    Wanikani::StudyQueue.stubs(:queue).returns(study_queue_data(10, 10))
 
     message = @stats.study_queue
     refute_match /You have more reviews coming your way on Tuesday, January 1 at \d{1,2}:\d{2} (AM|PM)./, message
   end
 
   def test_display_review_date_for_no_lessons_or_reviews
-    Wanikani::StudyQueue.expects(:queue).returns(study_queue_data(0, 0))
+    Wanikani::StudyQueue.stubs(:queue).returns(study_queue_data(0, 0))
 
     message = @stats.study_queue
     assert_match /You have no lessons or reviews now! You'll have some more on Tuesday, January 1 at \d{1,2}:\d{2} (AM|PM)./, message
@@ -76,7 +76,7 @@ class TestLevelProgression < MiniTest::Unit::TestCase
 
   def setup
     stats = WKCheck::Stats.new
-    Wanikani::Level.expects(:progression).returns(level_progression_data)
+    Wanikani::Level.stubs(:progression).returns(level_progression_data)
     @message = stats.level_progression
   end
 
