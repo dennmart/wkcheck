@@ -1,11 +1,17 @@
 module WKCheck
   class Stats
     def study_queue
-      queue = Wanikani::StudyQueue.queue
-      lessons = queue["lessons_available"]
-      reviews = queue["reviews_available"]
-      next_review_date = Time.at(queue["next_review_date"]).localtime.strftime("%A, %B %-d at %-l:%M %p")
-      queue_message(lessons, reviews, next_review_date)
+      if Wanikani::User.on_vacation?
+        user_info = Wanikani::User.information
+        vacation_date = Time.at(user_info["vacation_time"]).localtime.strftime("%A, %B %-d at %-l:%M %p")
+        "You are currently on vacation from WaniKani until #{vacation_date.bright}.".color(:green)
+      else
+        queue = Wanikani::StudyQueue.queue
+        lessons = queue["lessons_available"]
+        reviews = queue["reviews_available"]
+        next_review_date = Time.at(queue["next_review_date"]).localtime.strftime("%A, %B %-d at %-l:%M %p")
+        queue_message(lessons, reviews, next_review_date)
+      end
     end
 
     def level_progression

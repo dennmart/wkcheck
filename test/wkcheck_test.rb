@@ -24,6 +24,15 @@ class TestStudyQueue < MiniTest::Unit::TestCase
 
   def setup
     @stats = WKCheck::Stats.new
+    Wanikani::User.stubs(:on_vacation?).returns(false)
+  end
+
+  def test_display_vacation_date_when_in_vacation_mode
+    Wanikani::User.stubs(:on_vacation?).returns(true)
+    Wanikani::User.stubs(:information).returns({ "vacation_time" => 1357027200 })
+
+    message = @stats.study_queue
+    assert_match /You are currently on vacation from WaniKani until Tuesday, January 1 at \d{1,2}:\d{2} (AM|PM)./, message
   end
 
   def test_display_pending_lessons_and_reviews
