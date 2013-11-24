@@ -3,8 +3,8 @@ module WKCheck
     def study_queue
       if Wanikani::User.on_vacation?
         user_info = Wanikani::User.information
-        vacation_date = Time.at(user_info["vacation_time"]).localtime.strftime("%A, %B %-d at %-l:%M %p")
-        "You are currently on vacation from WaniKani until #{vacation_date.bright}.".color(:green)
+        vacation_date = Time.at(user_info["vacation_date"]).localtime.strftime("%A, %B %-d at %-l:%M %p")
+        "You are currently on vacation from WaniKani, starting from #{vacation_date.bright}.".color(:green)
       else
         queue = Wanikani::StudyQueue.queue
         lessons = queue["lessons_available"]
