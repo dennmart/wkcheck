@@ -2,9 +2,9 @@ PATH
   remote: .
   specs:
     wkcheck (0.0.7)
-      rainbow (~> 1.1.4)
-      slop (~> 3.4.4)
-      wanikani (~> 0.0.6)
+      rainbow (~> 1.1)
+      slop (~> 3.4)
+      wanikani (= 0.0.6)
 
 GEM
   remote: https://rubygems.org/
@@ -45,7 +45,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aruba (~> 0.5.2)
-  mocha (~> 0.13.3)
-  rake (~> 10.0.4)
+  aruba (~> 0.5)
+  mocha (~> 0.13)
+  rake (~> 10.0)
   wkcheck!
