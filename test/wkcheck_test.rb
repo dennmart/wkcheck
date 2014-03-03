@@ -9,7 +9,7 @@ end
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 require 'wkcheck'
 
-Sickill::Rainbow.enabled = false
+Rainbow.enabled = false
 
 class TestStudyQueue < MiniTest::Unit::TestCase
   def study_queue_data(lessons, reviews)
