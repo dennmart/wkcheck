@@ -1,3 +1,4 @@
+require 'cucumber'
 require 'cucumber/rake/task'
 require 'rake/testtask'
 
