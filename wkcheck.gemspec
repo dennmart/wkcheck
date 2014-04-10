@@ -1,6 +1,11 @@
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'wkcheck/version'
+
 Gem::Specification.new do |s|
   s.name          = "wkcheck"
-  s.version       = "0.0.7"
+  s.version       = WKCheck::VERSION
   s.date          = "2013-11-23"
   s.summary       = "Check your WaniKani stats from the command line"
   s.description   = "Check your pending lessons and reviews of your WaniKani account (http://www.wanikani.com/) from the command line"
@@ -16,6 +21,7 @@ Gem::Specification.new do |s|
     wkcheck.gemspec
     lib/wkcheck.rb
     lib/wkcheck/stats.rb
+    lib/wkcheck/version.rb
   ]
 
   s.required_ruby_version = '>= 1.9.2'
