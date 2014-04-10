@@ -4,7 +4,7 @@ module WKCheck
       if Wanikani::User.on_vacation?
         user_info = Wanikani::User.information
         vacation_date = Time.at(user_info["vacation_date"]).localtime.strftime("%A, %B %-d at %-l:%M %p")
-        "You are currently on vacation from WaniKani, starting from #{vacation_date.bright}.".color(:green)
+        Rainbow("You are currently on vacation from WaniKani, starting from #{Rainbow(vacation_date).bright}.").green
       else
         queue = Wanikani::StudyQueue.queue
         lessons = queue["lessons_available"]
@@ -16,7 +16,7 @@ module WKCheck
 
     def level_progression
       progress = Wanikani::Level.progression
-      message = "Your progress for level #{progress["current_level"]}:\n".color(:green)
+      message = Rainbow("Your progress for level #{progress["current_level"]}:\n").green
       message += progression_message(progress, "radicals")
       message += progression_message(progress, "kanji")
     end
@@ -25,13 +25,13 @@ module WKCheck
 
     def queue_message(lessons, reviews, next_review_date)
       if lessons.zero? && reviews.zero?
-        message = "You have no lessons or reviews now! You'll have some more on #{next_review_date.bright}.".color(:green)
+        message = Rainbow("You have no lessons or reviews now! You'll have some more on #{Rainbow(next_review_date).bright}.").green
       else
-        lessons_msg = lessons.zero? ? "no".color(:green) : lessons.to_s.color(:red)
-        reviews_msg = reviews.zero? ? "no".color(:green) : reviews.to_s.color(:red)
+        lessons_msg = lessons.zero? ? Rainbow("no").green : Rainbow(lessons.to_s).red
+        reviews_msg = reviews.zero? ? Rainbow("no").green : Rainbow(reviews.to_s).red
         message = "You have #{lessons_msg} lessons pending"
         message += "\nYou have #{reviews_msg} reviews pending"
-        message += "\nYou have more reviews coming your way on #{next_review_date.bright.color(:green)}." if reviews.zero?
+        message += "\nYou have more reviews coming your way on #{Rainbow(next_review_date).bright.green}." if reviews.zero?
         message
       end
     end
@@ -39,7 +39,7 @@ module WKCheck
     def progression_message(progress, group)
       percent = ((progress["#{group}_progress"].to_f / progress["#{group}_total"].to_f) * 100).round(1).to_s
       message = "#{progress["#{group}_progress"]} out of #{progress["#{group}_total"]} #{group.capitalize} ("
-      message += "#{percent}%".bright.color(:cyan)
+      message += Rainbow("#{percent}%").bright.cyan
       message += ")\n"
     end
   end
