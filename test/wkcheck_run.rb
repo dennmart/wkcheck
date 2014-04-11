@@ -1,44 +1,20 @@
 # wkcheck integration test with real calls.
 require 'rainbow'
 
-# Help message
-print "Running #{Rainbow('wkcheck -h').yellow.bright}... "
-begin
-  `wkcheck -h`
-  puts Rainbow("GOOD!").green.bright
-rescue
-  puts Rainbow("ERROR!").red.bright
-  error = true
-end
+error = false
 
-# Version display
-print "Running #{Rainbow('wkcheck -v').yellow.bright}... "
-begin
-  `wkcheck -v`
-  puts Rainbow("GOOD!").green.bright
-rescue
-  puts Rainbow("ERROR!").red.bright
-  error = true
-end
+%w(-h -v -q -l).each do |switch|
+  command = "wkcheck #{switch}"
+  puts "Running #{Rainbow(command).yellow.bright}... "
 
-# Study Queue
-print "Running #{Rainbow('wkcheck -q').yellow.bright}... "
-begin
-  `wkcheck -q`
-  puts Rainbow("GOOD!").green.bright
-rescue
-  puts Rainbow("ERROR!").red.bright
-  error = true
-end
-
-# Level Progression
-print "Running #{Rainbow('wkcheck -l').yellow.bright}... "
-begin
-  `wkcheck -l`
-  puts Rainbow("GOOD!").green.bright
-rescue
-  puts Rainbow("ERROR!").red.bright
-  error = true
+  begin
+    puts `wkcheck #{switch}`
+    puts Rainbow("GOOD!").green.bright
+  rescue
+    puts Rainbow("ERROR!").red.bright
+    error = true
+  end
+  puts "----------------------------------------"
 end
 
 if error
