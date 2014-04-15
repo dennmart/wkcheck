@@ -12,6 +12,7 @@ opts = Slop.parse(help: true) do
   on "api-key=", "Saves your WaniKani API Key to #{WKCheck::CONFIG_FILE}"
   on "q", "queue", "Displays your current study queue (new lessons / pending reviews)"
   on "l", "level", "Displays your current level progression (radicals / Kanji)"
+  on "c", "critical", "Displays your current critical items, with an optional argument to set the maximum percentage", argument: :optional
   on "v", "version", "Show version number and quit" do
     puts "wkcheck #{WKCheck::VERSION}"
     exit
@@ -45,6 +46,12 @@ end
 if opts.level?
   stats = WKCheck::Stats.new
   puts stats.level_progression
+  exit
+end
+
+if opts.critical?
+  critical = WKCheck::CriticalItems.new(opts["critical"])
+  puts critical.critical_items
   exit
 end
 

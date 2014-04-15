@@ -98,3 +98,52 @@ class TestLevelProgression < MiniTest::Unit::TestCase
     assert_match /10 out of 30 Kanji \(33.3%\)/, @message
   end
 end
+
+class TestCriticalItems < MiniTest::Unit::TestCase
+  def critical_items
+    [
+      {"type"=>"kanji", "character"=>"口", "meaning"=>"mouth", "onyomi"=>"こう", "kunyomi"=>"くち", "important_reading"=>"onyomi", "level"=>1, "percentage"=>"77"},
+      {"type"=>"radical", "character"=>"本", "meaning"=>"real", "image"=>nil, "level"=>2, "percentage"=>"76"},
+      {"type"=>"vocabulary", "character"=>"伝説", "kana"=>"でんせつ", "meaning"=>"legend", "level"=>17, "percentage"=>"76"}
+    ]
+  end
+
+  def setup
+    @critical = WKCheck::CriticalItems.new(nil)
+  end
+
+  def test_show_critical_items_default_percentage
+    Wanikani::CriticalItems.expects(:critical).with(75).returns(critical_items)
+    @critical.critical_items
+  end
+
+  def test_show_critical_items_specified_percentage
+    Wanikani::CriticalItems.expects(:critical).with(50).returns(critical_items)
+    @critical = WKCheck::CriticalItems.new(50)
+    @critical.critical_items
+  end
+
+  def test_critical_items_kanji_shows_character_important_reading_and_meaning
+    Wanikani::CriticalItems.stubs(:critical).returns(critical_items)
+    items = @critical.critical_items
+    assert_match /口/, items
+    assert_match /こう/, items
+    assert_match /mouth/, items
+    refute_match /くち/, items
+  end
+
+  def test_critical_items_radical_shows_character_and_meaning
+    Wanikani::CriticalItems.stubs(:critical).returns(critical_items)
+    items = @critical.critical_items
+    assert_match /本/, items
+    assert_match /real/, items
+  end
+
+  def test_critical_items_vocabulary_shows_character_kana_and_meaning
+    Wanikani::CriticalItems.stubs(:critical).returns(critical_items)
+    items = @critical.critical_items
+    assert_match /伝説/, items
+    assert_match /でんせつ/, items
+    assert_match /legend/, items
+  end
+end
