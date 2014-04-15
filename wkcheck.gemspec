@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
     wkcheck.gemspec
     lib/wkcheck.rb
     lib/wkcheck/stats.rb
+    lib/wkcheck/critical_items.rb
     lib/wkcheck/version.rb
   ]
 
