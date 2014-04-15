@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    wkcheck (0.0.8)
+    wkcheck (0.0.9)
       rainbow (~> 2.0)
       slop (~> 3.5)
       wanikani (= 0.0.7)

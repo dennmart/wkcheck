@@ -6,7 +6,7 @@ require 'wkcheck/version'
 Gem::Specification.new do |s|
   s.name          = "wkcheck"
   s.version       = WKCheck::VERSION
-  s.date          = "2014-04-10"
+  s.date          = "2014-04-14"
   s.summary       = "Check your WaniKani stats from the command line"
   s.description   = "Check your pending lessons and reviews of your WaniKani account (http://www.wanikani.com/) from the command line"
   s.authors       = ["Dennis Martinez"]

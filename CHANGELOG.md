@@ -1,5 +1,9 @@
 # Changelog for wkcheck gem
 
+### 0.0.9
+
+- Added `-c` / `--critical` option to view a list of current critical items.
+
 ### 0.0.8
 
 - Maintenance release: Gem dependency updates and gemspec cleanup.
