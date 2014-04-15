@@ -50,9 +50,16 @@ if opts.level?
 end
 
 if opts.critical?
-  critical = WKCheck::CriticalItems.new(opts["critical"])
-  puts critical.critical_items
-  exit
+  percentage = opts["critical"] || 75
+
+  if percentage.to_i.between?(1, 99)
+    critical = WKCheck::CriticalItems.new(percentage.to_i)
+    puts critical.critical_items
+    exit
+  else
+    puts "The maximum percentage should be between 1 and 99!"
+    exit 1
+  end
 end
 
 # No flags / Invalid flags - Display the help.

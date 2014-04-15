@@ -110,18 +110,7 @@ class TestCriticalItems < MiniTest::Unit::TestCase
   end
 
   def setup
-    @critical = WKCheck::CriticalItems.new(nil)
-  end
-
-  def test_show_critical_items_default_percentage
-    Wanikani::CriticalItems.expects(:critical).with(75).returns(critical_items)
-    @critical.critical_items
-  end
-
-  def test_show_critical_items_specified_percentage
-    Wanikani::CriticalItems.expects(:critical).with(50).returns(critical_items)
-    @critical = WKCheck::CriticalItems.new(50)
-    @critical.critical_items
+    @critical = WKCheck::CriticalItems.new(75)
   end
 
   def test_critical_items_none_returns_from_wanikani

@@ -1,7 +1,7 @@
 module WKCheck
   class CriticalItems
     def initialize(percentage)
-      @percentage = (percentage || 75).to_i
+      @percentage = percentage
     end
 
     def critical_items
