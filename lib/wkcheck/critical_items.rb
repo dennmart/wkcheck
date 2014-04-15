@@ -7,9 +7,13 @@ module WKCheck
     def critical_items
       critical = Wanikani::CriticalItems.critical(@percentage).sort_by { |item| item["type"] }
 
-      summary =  Rainbow("Your Critical Items - Max percentage: #{@percentage} ").bright.white
-      summary += "(#{Rainbow('Kanji').red}, #{Rainbow('Radicals').cyan}, #{Rainbow('Vocabulary').magenta}):\n"
-      summary += critical.map { |item| send("#{item["type"]}_info", item) }.compact.join("\n")
+      if critical.empty?
+        Rainbow("Awesome, you have no items under #{@percentage} percent correct! Keep on rockin'!").bright.green
+      else
+        summary =  Rainbow("Your Critical Items - Max percentage: #{@percentage} ").bright.white
+        summary += "(#{Rainbow('Kanji').red}, #{Rainbow('Radicals').cyan}, #{Rainbow('Vocabulary').magenta}):\n"
+        summary += critical.map { |item| send("#{item["type"]}_info", item) }.compact.join("\n")
+      end
     end
 
     private

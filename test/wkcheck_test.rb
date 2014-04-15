@@ -123,6 +123,12 @@ class TestCriticalItems < MiniTest::Unit::TestCase
     @critical.critical_items
   end
 
+  def test_critical_items_none_returns_from_wanikani
+    Wanikani::CriticalItems.stubs(:critical).returns([])
+    message = @critical.critical_items
+    assert_match /Awesome, you have no items under 75 percent correct! Keep on rockin'!/, message
+  end
+
   def test_critical_items_kanji_shows_character_important_reading_and_meaning
     Wanikani::CriticalItems.stubs(:critical).returns(critical_items)
     items = @critical.critical_items
