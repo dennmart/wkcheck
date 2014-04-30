@@ -3,9 +3,9 @@ require 'rainbow'
 
 error = false
 
-%w(-h -v -q -l -c).each do |switch|
+%w(-h -v -q -l -c -k -w).each do |switch|
   command = "wkcheck #{switch}"
-  puts "Running #{Rainbow(command).yellow.bright}... "
+  puts "Running #{Rainbow(command).cyan.bright}... "
 
   begin
     puts `wkcheck #{switch}`
