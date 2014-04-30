@@ -71,6 +71,27 @@ Your Critical Items - Max percentage: 85 (Kanji, Radicals, Vocabulary):
 商売 (しょうばい) - business, commerce
 ```
 
+### Random Kanji / Random Word
+
+Displays information for a random kanji or word from WaniKani's database. It goes through all levels, not just
+your current level.
+
+```
+$ wkcheck -k
+Your random kanji is 肌
+Level: 45
+Meaning: skin
+Reading (kunyomi): はだ
+```
+
+```
+$ wkcheck -w
+Your random word is 彩る
+Level: 48
+Meaning: to color something, to colour something, to color, to colour
+Reading: いろどる
+```
+
 ## Contributing
 
 I'll be super-happy if you guys help giving back! If you want to do some hacking on wkcheck for your needs, this is a good guideline to get started:
