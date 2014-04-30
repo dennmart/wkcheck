@@ -100,6 +100,58 @@ class TestLevelProgression < MiniTest::Unit::TestCase
   end
 end
 
+class TestRandomKanji < MiniTest::Unit::TestCase
+  def kanji_data
+    {
+      "character" => "頭",
+      "meaning" => "head",
+      "onyomi" => "ず",
+      "kunyomi" => "あたま",
+      "important_reading" => "kunyomi",
+      "level" => 10,
+      "user_specific" => nil
+    }
+  end
+
+  def setup
+    stats = WKCheck::Stats.new
+    Wanikani::Level.stubs(:kanji).returns([kanji_data])
+    @message = stats.random_kanji
+  end
+
+  def test_random_kanji_contains_character_important_reading_level_and_meaning
+    assert_match /Your random kanji is 頭/, @message
+    assert_match /Level: 10/, @message
+    assert_match /Meaning: head/, @message
+    assert_match /Reading \(kunyomi\): あたま/, @message
+  end
+end
+
+class TestRandomWord < MiniTest::Unit::TestCase
+  def vocabulary_data
+    {
+      "character" => "粘着",
+      "kana" => "ねんちゃく",
+      "meaning" => "cohesion, adhesion",
+      "level" => 47,
+      "user_specific" => nil
+    }
+  end
+
+  def setup
+    stats = WKCheck::Stats.new
+    Wanikani::Level.stubs(:vocabulary).returns([vocabulary_data])
+    @message = stats.random_word
+  end
+
+  def test_random_word_contains_character_reading_level_and_meaning
+    assert_match /Your random word is 粘着/, @message
+    assert_match /Level: 47/, @message
+    assert_match /Meaning: cohesion, adhesion/, @message
+    assert_match /Reading: ねんちゃく/, @message
+  end
+end
+
 class TestCriticalItems < MiniTest::Unit::TestCase
   def critical_items
     [

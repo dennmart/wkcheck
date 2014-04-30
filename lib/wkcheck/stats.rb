@@ -21,6 +21,22 @@ module WKCheck
       message += progression_message(progress, "kanji")
     end
 
+    def random_kanji
+      random_kanji = Wanikani::Level.kanji(rand(1..50)).sample
+      message = Rainbow("Your random kanji is ").bright +  Rainbow(random_kanji['character']).bright.underline + "\n"
+      message += Rainbow("Level: ").bright + random_kanji['level'].to_s + "\n"
+      message += Rainbow("Meaning: ").bright + random_kanji['meaning'] + "\n"
+      message += Rainbow("Reading (#{random_kanji['important_reading']}): ").bright + random_kanji[random_kanji['important_reading']]
+    end
+
+    def random_word
+      random_word = Wanikani::Level.vocabulary(rand(1..50)).sample
+      message = Rainbow("Your random word is ").bright +  Rainbow(random_word['character']).bright.underline + "\n"
+      message += Rainbow("Level: ").bright + random_word['level'].to_s + "\n"
+      message += Rainbow("Meaning: ").bright + random_word['meaning'] + "\n"
+      message += Rainbow("Reading: ").bright + random_word['kana']
+    end
+
     private
 
     def queue_message(lessons, reviews, next_review_date)

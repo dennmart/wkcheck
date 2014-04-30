@@ -11,8 +11,10 @@ opts = Slop.parse(help: true) do
 
   on "api-key=", "Saves your WaniKani API Key to #{WKCheck::CONFIG_FILE}"
   on "q", "queue", "Displays your current study queue (new lessons / pending reviews)"
-  on "l", "level", "Displays your current level progression (radicals / Kanji)"
+  on "l", "level", "Displays your current level progression (radicals / kanji)"
   on "c", "critical", "Displays your current critical items, with an optional argument to set the maximum percentage", argument: :optional
+  on "k", "kanji", "Displays information of a randomly selected kanji"
+  on "w", "word", "Displays information of a randomly selected vocabulary word"
   on "v", "version", "Show version number and quit" do
     puts "wkcheck #{WKCheck::VERSION}"
     exit
@@ -60,6 +62,18 @@ if opts.critical?
     puts "The maximum percentage should be between 1 and 99!"
     exit 1
   end
+end
+
+if opts.kanji?
+  stats = WKCheck::Stats.new
+  puts stats.random_kanji
+  exit
+end
+
+if opts.word?
+  stats = WKCheck::Stats.new
+  puts stats.random_word
+  exit
 end
 
 # No flags / Invalid flags - Display the help.
