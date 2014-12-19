@@ -8,7 +8,7 @@ error = false
   puts "Running #{Rainbow(command).cyan.bright}... "
 
   begin
-    puts `wkcheck #{switch}`
+    raise unless system("bin/wkcheck #{switch}")
     puts Rainbow("GOOD!").green.bright
   rescue
     puts Rainbow("ERROR!").red.bright
