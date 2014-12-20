@@ -34,4 +34,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "aruba", "~> 0.6"
   s.add_development_dependency "mocha", "~> 1.1"
   s.add_development_dependency "rake", "~> 10.0"
+  s.add_development_dependency "minitest", "~> 5.5"
 end
