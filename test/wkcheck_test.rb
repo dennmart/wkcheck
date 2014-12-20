@@ -12,7 +12,7 @@ require 'wkcheck'
 
 Rainbow.enabled = false
 
-class TestStudyQueue < MiniTest::Unit::TestCase
+class TestStudyQueue < MiniTest::Test
   def study_queue_data(lessons, reviews)
     {
       "lessons_available"           => lessons,
@@ -73,7 +73,7 @@ class TestStudyQueue < MiniTest::Unit::TestCase
   end
 end
 
-class TestLevelProgression < MiniTest::Unit::TestCase
+class TestLevelProgression < MiniTest::Test
   def level_progression_data
     {
       "current_level" => 30,
@@ -100,7 +100,7 @@ class TestLevelProgression < MiniTest::Unit::TestCase
   end
 end
 
-class TestRandomKanji < MiniTest::Unit::TestCase
+class TestRandomKanji < MiniTest::Test
   def kanji_data
     {
       "character" => "頭",
@@ -127,7 +127,7 @@ class TestRandomKanji < MiniTest::Unit::TestCase
   end
 end
 
-class TestRandomWord < MiniTest::Unit::TestCase
+class TestRandomWord < MiniTest::Test
   def vocabulary_data
     {
       "character" => "粘着",
@@ -152,7 +152,7 @@ class TestRandomWord < MiniTest::Unit::TestCase
   end
 end
 
-class TestCriticalItems < MiniTest::Unit::TestCase
+class TestCriticalItems < MiniTest::Test
   def critical_items
     [
       {"type"=>"kanji", "character"=>"口", "meaning"=>"mouth", "onyomi"=>"こう", "kunyomi"=>"くち", "important_reading"=>"onyomi", "level"=>1, "percentage"=>"77"},

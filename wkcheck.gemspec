@@ -27,11 +27,11 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 1.9.2'
 
-  s.add_runtime_dependency "wanikani", "0.10"
+  s.add_runtime_dependency "wanikani", "~> 1.0"
   s.add_runtime_dependency "slop", "~> 3.5"
   s.add_runtime_dependency "rainbow", "~> 2.0"
 
-  s.add_development_dependency "aruba", "~> 0.5"
-  s.add_development_dependency "mocha", "~> 1.0"
+  s.add_development_dependency "aruba", "~> 0.6"
+  s.add_development_dependency "mocha", "~> 1.1"
   s.add_development_dependency "rake", "~> 10.0"
 end

@@ -8,7 +8,8 @@ Cucumber::Rake::Task.new(:features) do |t|
 end
 
 Rake::TestTask.new do |t|
-  t.test_files = Dir.glob('test/*_test.rb')
+  t.libs << "test"
+  t.test_files = FileList['test/*_test.rb']
 end
 
 namespace :test do
