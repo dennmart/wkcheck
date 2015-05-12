@@ -1,5 +1,8 @@
 # Changelog for wkcheck gem
 
+### 0.1
+- Dropped support for Ruby 1.9.2 (Minimum Ruby version required: 1.9.3).
+
 ### 0.0.10
 - Added `-k` / `--kanji` option to display a random kanji from WaniKani's API.
 - Added `-w` / `--word` option to display a random vocabulary from WaniKani's API.
