@@ -60,8 +60,7 @@ module WKCheck
     end
 
     def random_level
-      # Doing it this way because the `rand` function in Ruby 1.9.2 does not support ranges
-      (1..50).to_a.sample
+      rand(1..50)
     end
   end
 end
