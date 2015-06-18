@@ -18,6 +18,11 @@ namespace :test do
     Rake::Task["features"].execute
     Rake::Task["test"].execute
   end
+
+  desc "Run all commands to make sure things are working properly"
+  task :smoketest do
+    ruby "test/wkcheck_run.rb"
+  end
 end
 
 task(default: :test)
