@@ -6,17 +6,21 @@ require 'slop'
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 require 'wkcheck'
 
-opts = Slop.parse(help: true) do
-  banner "Usage: wkcheck [options]"
+opts = Slop.parse do |o|
+  o.banner = "Usage: wkcheck [options]"
 
-  on "api-key=", "Saves your WaniKani API Key to #{WKCheck::CONFIG_FILE}"
-  on "q", "queue", "Displays your current study queue (new lessons / pending reviews)"
-  on "l", "level", "Displays your current level progression (radicals / kanji)"
-  on "c", "critical", "Displays your current critical items, with an optional argument to set the maximum percentage", argument: :optional
-  on "k", "kanji", "Displays information of a randomly selected kanji"
-  on "w", "word", "Displays information of a randomly selected vocabulary word"
-  on "v", "version", "Show version number and quit" do
+  o.string "--api-key", "Saves your WaniKani API Key to #{WKCheck::CONFIG_FILE}", suppress_errors: true
+  o.on "-q", "--queue", "Displays your current study queue (new lessons / pending reviews)"
+  o.on "-l", "--level", "Displays your current level progression (radicals / kanji)"
+  o.integer "-c", "--critical", "Displays your current critical items, with an optional argument to set the maximum percentage", suppress_errors: true
+  o.on "-k", "--kanji", "Displays information of a randomly selected kanji"
+  o.on "-w", "--word", "Displays information of a randomly selected vocabulary word"
+  o.on "-v", "--version", "Show version number and quit" do
     puts "wkcheck #{WKCheck::VERSION}"
+    exit
+  end
+  o.on "-h", "--help", "Displays this help information" do
+    puts o
     exit
   end
 end
@@ -52,7 +56,7 @@ if opts.level?
 end
 
 if opts.critical?
-  percentage = opts["critical"] || 75
+  percentage = opts[:critical] || 75
 
   if percentage.to_i.between?(1, 99)
     critical = WKCheck::CriticalItems.new(percentage.to_i)
@@ -77,4 +81,4 @@ if opts.word?
 end
 
 # No flags / Invalid flags - Display the help.
-puts opts.help
+puts opts

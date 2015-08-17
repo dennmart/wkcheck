@@ -1,44 +1,46 @@
 PATH
   remote: .
   specs:
-    wkcheck (0.1)
+    wkcheck (0.2)
       rainbow (~> 2.0)
-      slop (~> 3.6)
-      wanikani (~> 1.2)
+      slop (~> 4.2)
+      wanikani (~> 1.3)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    aruba (0.6.2)
-      childprocess (>= 0.3.6)
-      cucumber (>= 1.1.1)
-      rspec-expectations (>= 2.7.0)
+    aruba (0.8.1)
+      childprocess (~> 0.5.6)
+      contracts (~> 0.9)
+      cucumber (>= 1.3.19)
+      rspec-expectations (>= 2.99)
     builder (3.2.2)
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
-    cucumber (2.0.0)
+    contracts (0.11.0)
+    cucumber (2.0.2)
       builder (>= 2.1.2)
-      cucumber-core (~> 1.1.3)
+      cucumber-core (~> 1.2.0)
       diff-lcs (>= 1.1.3)
       gherkin (~> 2.12)
       multi_json (>= 1.7.5, < 2.0)
       multi_test (>= 0.1.2)
-    cucumber-core (1.1.3)
+    cucumber-core (1.2.0)
       gherkin (~> 2.12.0)
     diff-lcs (1.2.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
-    ffi (1.9.8)
+    ffi (1.9.10)
     gherkin (2.12.2)
       multi_json (~> 1.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     metaclass (0.0.4)
     mime-types (2.6.1)
-    minitest (5.7.0)
+    minitest (5.8.0)
     mocha (1.1.0)
       metaclass (~> 0.0.1)
-    multi_json (1.11.1)
+    multi_json (1.11.2)
     multi_test (0.1.2)
     netrc (0.10.3)
     rainbow (2.0.0)
@@ -47,15 +49,15 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
-    rspec-expectations (3.3.0)
+    rspec-expectations (3.3.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
-    slop (3.6.0)
+    slop (4.2.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
-    wanikani (1.2)
+    wanikani (1.3)
       multi_json (~> 1.10)
       rest-client (~> 1.7)
 
@@ -63,11 +65,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aruba (~> 0.6)
-  minitest (~> 5.7)
+  aruba (~> 0.8)
+  minitest (~> 5.8)
   mocha (~> 1.1)
   rake (~> 10.0)
   wkcheck!
 
 BUNDLED WITH
-   1.10.4
+   1.10.6

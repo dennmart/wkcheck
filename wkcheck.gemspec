@@ -6,7 +6,7 @@ require 'wkcheck/version'
 Gem::Specification.new do |s|
   s.name          = "wkcheck"
   s.version       = WKCheck::VERSION
-  s.date          = "2014-04-14"
+  s.date          = "2015-08-17"
   s.summary       = "Check your WaniKani stats from the command line"
   s.description   = "Check your pending lessons and reviews of your WaniKani account (http://www.wanikani.com/) from the command line"
   s.authors       = ["Dennis Martinez"]
@@ -27,12 +27,12 @@ Gem::Specification.new do |s|
 
   s.required_ruby_version = '>= 1.9.3'
 
-  s.add_runtime_dependency "wanikani", "~> 1.2"
-  s.add_runtime_dependency "slop", "~> 3.6"
+  s.add_runtime_dependency "wanikani", "~> 1.3"
+  s.add_runtime_dependency "slop", "~> 4.2"
   s.add_runtime_dependency "rainbow", "~> 2.0"
 
-  s.add_development_dependency "aruba", "~> 0.6"
+  s.add_development_dependency "aruba", "~> 0.8"
   s.add_development_dependency "mocha", "~> 1.1"
   s.add_development_dependency "rake", "~> 10.0"
-  s.add_development_dependency "minitest", "~> 5.7"
+  s.add_development_dependency "minitest", "~> 5.8"
 end
