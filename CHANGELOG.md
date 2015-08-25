@@ -1,5 +1,9 @@
 # Changelog for wkcheck gem
 
+### 0.2
+- Dropped support for Ruby 1.9 altogether (Minimum Ruby version required: 2.0.0).
+- Gem dependency updates and gemspec cleanup.
+
 ### 0.1
 - Dropped support for Ruby 1.9.2 (Minimum Ruby version required: 1.9.3).
 
